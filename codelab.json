@@ -1,0 +1,24 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2020-02-17T14:35:24Z",
+  "id": "codelab-test2",
+  "duration": 14,
+  "title": "CodeLab to Create a CodeLab",
+  "summary": "Create a CodeLab Using Markdown",
+  "source": "codelab1.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "codelab",
+    "markdown"
+  ],
+  "tags": [
+    "web"
+  ],
+  "url": "codelab-test2"
+}
