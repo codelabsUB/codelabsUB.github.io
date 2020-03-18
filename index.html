@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
   <meta name="theme-color" content="#4F7DC9">
   <meta charset="UTF-8">
-  <title>Ethical Data Science</title>
+  <title>Crash course on Python</title>
   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
   <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://storage.googleapis.com/codelab-elements/codelab-elements.css">
@@ -22,63 +22,270 @@
 <body>
   <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
   <google-codelab codelab-gaid=""
-                  id="EthicalDataScience"
-                  title="Ethical Data Science"
+                  id="CrashcourseonPython"
+                  title="Crash course on Python"
                   environment="web"
                   feedback-link="">
     
-      <google-codelab-step label="Syllabus" duration="2">
-        <p>Are you trying to create easy to use, visually appealing content for the tech community? This CodeLab will show you how to quickly create your own Google CodeLab just like the one you&#39;re using right now.<br>When creating a Codelab you have two authoring options:</p>
-<ol type="1">
-<li>Using a Google Doc</li>
-<li>Using a markdown file</li>
-</ol>
-<p>In this codelab we are going to use the second option and author our codelab using a markdown file. This gives us the flexibility of using our markdown file for other things and also storing it in our github repo with any code that might be used for a tutorial.</p>
-<p><strong>Resources:</strong></p>
+      <google-codelab-step label="Syllabus" duration="1">
+        <p>Python basic programming topics:</p>
 <ul>
-<li>This codelab&#39;s original home is located here: <a href="https://www.marcd.dev/codelab-4-codelab" target="_blank">Link to Codelab</a></li>
-<li>The markdown for the original codelab is located here: <a href="https://github.com/Mrc0113/codelab-4-codelab/blob/master/codelab.md" target="_blank">codelab.md</a></li>
-<li><a href="https://github.com/googlecodelabs/tools" target="_blank">Google CodeLabs Tools Github</a> - The repo that contains the claat tool we&#39;ll be using today</li>
-<li><a href="https://groups.google.com/forum/#!forum/codelab-authors" target="_blank">Google Group for CodeLab Authors</a> - great forum for asking questions about codelabs and discussing future functionality</li>
-<li><a href="https://medium.com/@mariopce/tutorial-how-to-make-tutorials-using-google-code-labs-gangdam-style-d62b35476816" target="_blank">A blog that I used when getting started with Google Codelabs</a></li>
+<li>Python modules or how to extend the instruction set</li>
+<li>Data Types and Operations.</li>
+<li>A program in Python</li>
+<li>A function in Python</li>
+<li>Slicing</li>
+<li>References</li>
+<li>Comprehensions</li>
+<li>Generators</li>
+<li>Objects</li>
+<li>Reading Data</li>
 </ul>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Environment Setup" duration="4">
-        <p>In order to create a CodeLab you need <em>Go</em> and <em>claat</em> (the codelabs command line tool) installed.</p>
-<p>The instructions below are what worked for me on Mac, but you can also find instructions <a href="https://github.com/googlecodelabs/tools/tree/master/claat" target="_blank">here</a></p>
-<h3 is-upgraded>Install Go</h3>
-<p>Install <a href="https://golang.org/dl/" target="_blank">Go</a> if you don&#39;t have it.<br>You can use Homebrew if you have it on mac</p>
-<pre><code>$ brew install go
+      <google-codelab-step label="Installation" duration="0">
+        <ul>
+<li>For new users who want to get up and running with minimal effort, we suggest you to download and install Anaconda (<code>http://docs.continuum.io/anaconda/</code>) which provide a setup based on Python 3.x.</li>
+<li>Anaconda is a free collection of powerful packages for Python that enables large-scale data management, analysis, and visualization for Business Intelligence, Scientific Analysis, Engineering, Machine Learning, and more.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Python" duration="1">
+        <p>The software program that you use to invoke operators is called an <strong>interpreter</strong>. You enter your commands as a <em>dialog</em> between you and the interpreter. Commands can be entered as part of a script (a text file with a list of commands to perform) or directly at the <em>cell</em>.</p>
+<p>In order to ask to the interpreter what to do, you must <strong>invoke</strong> an operator:</p>
+<pre><code>&gt; 3 + 4 + 9
+16
 </code></pre>
-<h3 is-upgraded>Setup Go Environment Variables</h3>
-<p>Below is what I set on mac, but instructions are <a href="https://golang.org/doc/install" target="_blank">here</a> for other OS options</p>
-<pre><code>$ export GOPATH=$HOME/Go
-$ export GOROOT=/usr/local/opt/go/libexec
-$ export PATH=$PATH:$GOPATH/bin
-$ export PATH=$PATH:$GOROOT/bin
+<pre><code>&gt; list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 </code></pre>
-<h3 is-upgraded>Install claat</h3>
-<p>Install claat</p>
-<pre><code>$ go get -u -v -x github.com/googlecodelabs/tools/claat
+<p>It&#39;s helpful to think of the computation carried out by an operator as involving four parts:</p>
+<ul>
+<li>The name of the operator</li>
+<li>The input arguments</li>
+<li>The output value</li>
+<li>Side effects</li>
+</ul>
+<p>A typical operation takes one or more input arguments and uses the information in these to produce an output value. Along the way, the computer might take some action: display a graph, store a file, make a sound, etc. These actions are called side effects.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Modules" duration="1">
+        <h2 is-upgraded>Modules</h2>
+<p>Python is a general-purpose programming language, so when we want to use more specific commands (such as statistical operators or string processing oeprators) we usually need to import them before we can use them. For Scientific Python, one of the most important libraries that we need is <strong>numpy</strong> (Numerical Python), which can be loaded like this:</p>
+<pre><code>&gt; import numpy as np
+&gt; np.sqrt(25)
+&gt; 5
 </code></pre>
-<p>You should now have the <em>claat</em> command available to you.</p>
-<pre><code>$ claat
+<pre><code>&gt; np.arange(10)
+array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+</code></pre>
+<p>Access to the functions, variables and classes of a module depends on the way the module was imported:</p>
+<pre><code>&gt; import math
+&gt; math.cos(math.pi)
+</code></pre>
+<pre><code>&gt; import math as m  # import using an alias
+&gt; m.cos(m.pi)
+</code></pre>
+<pre><code>&gt; from math import cos,pi # import only some functions
+&gt; cos(pi)
+</code></pre>
+<pre><code>&gt; from math import *   # global import
+&gt; cos(pi)
 </code></pre>
 
 
       </google-codelab-step>
     
-      <google-codelab-step label="Create your initial CodeLab" duration="5">
-        <p>Now that we have the environment setup let&#39;s go ahead and create a markdown file where we&#39;ll create the actual codelab.</p>
-<aside class="warning"><p>If you&#39;re using Windows make sure to set your text editor to use UNIX line endings!</p>
-</aside>
-<pre><code>$ vim codelab.md
+      <google-codelab-step label="Objects" duration="0">
+        <p>Often the value returned by an operation will be used later on. Values can be stored for later use with the <strong>assignment operator</strong>:</p>
+<pre><code>a = 101
 </code></pre>
-<h3 is-upgraded>Fill-in the header metadata</h3>
-<p>Copy and paste the headers below into your markdown file and change the values appropriately.<br>Guidelines are available below the sample headers.</p>
+<p>The command has stored the value 101 under the name <code>a</code>. Such stored values are called <strong>objects</strong>.</p>
+<p>Making an assignment to an object defines the object. Once an object has been defined, it can be referred to and used in later computations.</p>
+<p>To refer to the value stored in the object, just use the object&#39;s name itself. For instance:</p>
+<pre><code>b = np.sqrt(a)
+b
+</code></pre>
+<p>There are some general rules for object names:</p>
+<ul>
+<li>Use only letters and numbers and ‘underscores&#39; (_)</li>
+<li>Do NOT use spaces anywhere in the name</li>
+<li>A number cannot be the first character in the name</li>
+<li>Capital letters are treated as distinct from lower-case letters (i.e., Python is case-sensitive)</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Dynamic Typing" duration="0">
+        <h2 is-upgraded>Dynamic Typing</h2>
+<p>When you assign a new value to an existing object (<em>dynamic typing</em>), the former values of that object is erased from the computer memory. The former value of b was 10.0498756211, but after a new assignment:</p>
+<pre><code>b = &#39;a&#39;
+print(b)
+</code></pre>
+<p>The value of an object is changed only via the assignment operator. Using an object in a computation does not change the value.</p>
+<p>The brilliant thing about organizing operators in terms of input arguments and output values is that the output of one operator can be used as an input to another. This lets complicated computations be built out of simpler ones.</p>
+<p>One way to connect the computations is by using objects to store the intermediate outputs:</p>
+<pre><code>a = np.arange(5)
+np.sqrt(a)
+</code></pre>
+<p>You can also pass the output of an operator directly as an argument to another operator:</p>
+<pre><code>np.sqrt(np.arange(5))
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Data Types" duration="0">
+        <p>Most of the examples used so far have dealt with numbers. But computers work with other kinds of information as well: text, photographs, sounds, sets of data, and so on. The word <em>type</em> is used to refer to the kind of information.</p>
+<p>It&#39;s important to know about the types of data because operators expect their input arguments to be of specific types. When you use the wrong type of input, the computer might not be able to process your command.</p>
+<p>For our purposes, it&#39;s important to distinguish among several basic types:</p>
+<ul>
+<li>Numeric (positive and negative) data:<br><br><ul>
+<li>decimal and fractional numbers (<strong>floats</strong>), <code>a = 3.5</code></li>
+<li>arbitrary length whole numbers (<strong>ints</strong>):  <code>c=1809109863596239561236235625629561</code></li>
+</ul>
+</li>
+<li><strong>Strings</strong> of textual data - you indicate string data to the computer by enclosing the text in quotation marks (e.g., <code>name = &#34;python&#34;</code>).</li>
+<li><strong>Boolean</strong> data: <code>a = True</code> or <code>a = False</code>.</li>
+<li><strong>Complex</strong> numbers: <code>a = 2+3j</code></li>
+<li>Sequence types: <strong>tuples, lists, sets, dictionaries</strong> and <strong>files</strong>.</li>
+</ul>
+<pre><code>a = 10
+</code></pre>
+<pre><code>a = &#39;a&#39;
+print(a)
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Operators" duration="0">
+        <ul>
+<li>Addition (also string, tuple and list concatenation) <code>a + b</code></li>
+<li>Subtraction (also set difference): <code>a - b</code></li>
+<li>Multiplication (also string, tuple and list replication): <code>a * b</code></li>
+<li>Division: <code>a / b</code></li>
+<li>Truncated integer division (rounded towards minus infinity): <code>a // b</code></li>
+<li>Modulus or remainder: <code>a % b</code></li>
+<li>Exponentiation: <code>a ** b</code></li>
+<li>Assignment: <code>=</code>, <code>-=</code>, <code>+=</code>,<code>/=</code>,<code>*=</code>, <code>%=</code>, <code>//=</code>, <code>**=</code></li>
+<li>Boolean comparisons: <code>==</code>, <code>!=</code>, <code>&lt;</code>,<code>&gt;</code>,<code>&lt;=</code>, <code>&gt;=</code></li>
+<li>Boolean operators: <code>and</code>, <code>or</code>, <code>not</code></li>
+<li>Membership test operators: <code>in</code>, <code>not in</code></li>
+<li>Object identity operators: <code>is</code>, <code>is not</code></li>
+<li>Bitwise operators (or, xor, and, complement): <code>|</code>, <code>^</code>, <code>&amp;</code>, <code>~</code></li>
+<li>Left and right bit shift: <code>&lt;&lt;</code>, <code>&gt;&gt;</code></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Python as a calculator" duration="0">
+        <p>The Python language has a concise notation for arithmetic that looks very much like the traditional one.</p>
+<pre><code>&gt; a = 3+2
+&gt; b= 3.5 * -8
+&gt; c = 10/6
+&gt; print(a, b, c, 10./6.)
+5 -28.0 1.6666666666666667 1.6666666666666667
+</code></pre>
+<p>Some math functions are not available in the basic Python module, and they need to be imported from a specific module:</p>
+<pre><code>&gt; import math   # this instruction is not executed if the module has already been imported
+&gt; print(math.pi + math.sin(100) + math.ceil(2.3))
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="A program in Python" duration="0">
+        <p>General Rules:</p>
+<ul>
+<li>All text from a <code>#</code> simbol to the end of a line are considered as comments.</li>
+<li>Code must be <strong>indented</strong> and sometimes delineated by colons. The Python standard for indentation is four spaces.</li>
+</ul>
+<aside class="warning"><p>Never use tabs. It can produce hard to find errors. Set you editor to convert tabs to spaces.</p>
+</aside>
+<ul>
+<li>Typically, a statement must be on a line. You can use a backslash <code>\</code> at the end of a line to continue a statement on to the next line.</li>
+</ul>
+<pre><code>&gt; fact = 1
+&gt; n= 100
+&gt; for factor in range(n,0,-1):
+&gt;     fact = fact * factor 
+&gt; print(fact) 
+93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000   
+</code></pre>
+<pre><code>&gt; list(range(10,0,-1))
+[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+</code></pre>
+<p>When we write a colon at the end of an iteration, <strong>all lines</strong> indented at the next level are considered <em>part</em> of the iteration.</p>
+<p>When we write a line at the same indentation as the iteration, we are closing the iteration.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="A function in Python: Factorial" duration="0">
+        <p>The factorial of a non-negative integer $n$, denoted by $n!$, is the product of all positive integers less than or equal to $n$.</p>
+<pre><code>&gt; def factorial(n):
+&gt;     fact = 1
+&gt;     for factor in range(n,0,-1):
+&gt;         fact = fact * factor
+&gt;     return fact
+&gt;     
+&gt;     factorial(100)
+93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="A function in Python: Fibonacci" duration="0">
+        <p>The Fibonacci Sequence is the series of numbers: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...</p>
+<p>The general rule to compute the sequence is very simple: The next number is found by adding up the two numbers before it.</p>
+<pre><code>&gt; def fib1(n):
+&gt;     if n==1:
+&gt;         return 1
+&gt;     if n==0:
+&gt;         return 0
+&gt;     return fib1(n-1) + fib1(n-2)
+&gt; 
+&gt; fib1(20)
+</code></pre>
+<pre><code>&gt; def fib2(n):
+&gt;     a, b = 0, 1
+&gt;     for i in range(1,n+1):
+&gt;         a, b = b, a + b
+&gt;     return a
+&gt; 
+&gt; n = 1000
+&gt; if n&lt;15:
+&gt;     print(fib1(n))
+&gt; else: 
+&gt;     print(fib2(n))
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="A function in Python: Greatest Common Divisor" duration="0">
+        <p>The greatest common divisor of two positive integers $a$ and $b$ is the largest divisor common to $a$ and $b$.  The Euclidean algorithm, or Euclid&#39;s algorithm, is an interative method for computing the greatest common divisor of two integers.</p>
+<ul>
+<li>If $a$, exchange $a$ and $b$.</li>
+<li>Divide $a$ by $b$ and get the remainder, $r$. If $r=0$, report $b$ as the GCD of $a$ and $b$.</li>
+<li>Replace $a$ by $b$ and replace $b$ by $r$. If $r \neq 0$ iterate.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Fill-in the header metadata" duration="0">
+        <p>Copy and paste the headers below into your markdown file and change the values appropriately.<br>Guidelines are available below the sample headers.</p>
 <pre><code>author: Author Name
 summary: Summary of your codelab that is human readable
 id: unique-codelab-identifier
@@ -194,6 +401,18 @@ $ docker container run -it -v $(pwd):/app bpetetot/claat export my-codelab.md
   <script src="https://storage.googleapis.com/codelab-elements/custom-elements.min.js"></script>
   <script src="https://storage.googleapis.com/codelab-elements/prettify.js"></script>
   <script src="https://storage.googleapis.com/codelab-elements/codelab-elements.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML&delayStartupUntil=configured" type="text/javascript"></script>
+
+  <script type="text/javascript">
+// Setup MathJax
+      MathJax.Hub.Config({
+          tex2jax: {
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+      });
+
+      MathJax.Hub.Configured();
+  </script>
 
 </body>
 </html>
