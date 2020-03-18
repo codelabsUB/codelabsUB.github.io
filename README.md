@@ -1,6 +1,6 @@
 ``docker container run -it -v $(pwd):/app bpetetot/claat export [codelab.md]``
 
-`<head>
+``<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>MathJax example</title>
